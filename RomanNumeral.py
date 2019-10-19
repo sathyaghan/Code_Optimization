@@ -158,7 +158,7 @@ def roman_converter(num):
 A new and smaller method with divmod
 """
 
-ARABIC_TO_ROMAN = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
+NUMERAL_TO_ROMAN = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
                    (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
                    (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
 
@@ -166,8 +166,8 @@ ARABIC_TO_ROMAN = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
 def _convert_to_roman_numeral(number: int) -> str:
     """Convert number to a roman numeral string"""
     result = list()
-    for arabic, roman in ARABIC_TO_ROMAN:
-        count, number = divmod(number, arabic)
+    for numeral, roman in NUMERAL_TO_ROMAN:
+        count, number = divmod(number, numeral)
         result.append(roman * count)
     return "".join(result)
 
