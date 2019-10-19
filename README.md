@@ -19,8 +19,11 @@ I break the number into its constituent digits, put it into a dictionary which h
 Say in 2300 --> {1000: 2, 100: 3, 10: 0, 1: 0}.
 The converter then takes values from the dictionary and quickly assigns it to the building string. 
 
+### Approach 3
+A completely different approach than the first two, here the roman and numerals are kept as a nested list. The converter then traverses the list and divides the number by the numeral equivalent in the list. The quotient is again passed at the next iteration of the loop as the new number, the remainder as the count for repeating the roman numeral as and when required.
+
 ## Result
-On an average the second approach was 32% more efficient than the first. 
+On an average the second approach was 32% more efficient than the first. The third was approximately 50% better than the second and 65% better than the first. Clearly illustrating that library functions decrease the run-time considerably and perform better than optimized pure logic codes. 
 
 ## Note
 I am still a python novice, and trying to pick up as many tips and suggestions as possible to improve my coding efficiency.
