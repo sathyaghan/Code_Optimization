@@ -154,15 +154,37 @@ def roman_converter(num):
     else:
         return "We currently do not allow numbers larger than or equal to 4000"
 
+"""
+A new and smaller method with divmod
+"""
+
+ARABIC_TO_ROMAN = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"),
+                   (100, "C"), (90, "XC"), (50, "L"), (40, "XL"),
+                   (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
+
+
+def _convert_to_roman_numeral(number: int) -> str:
+    """Convert number to a roman numeral string"""
+    result = list()
+    for arabic, roman in ARABIC_TO_ROMAN:
+        count, number = divmod(number, arabic)
+        result.append(roman * count)
+    return "".join(result)
+
 
 # Calculates the time taken to run both the methods in microseconds
 t1 = time.now().microsecond
-print(convert_roman(2000))
+print(convert_roman(1000))
 t2 = time.now().microsecond
-print(roman_converter(2000))
+print(roman_converter(1000))
 t3 = time.now().microsecond
+print(_convert_to_roman_numeral(1000))
+t4 = time.now().microsecond
 # Print the times
 print(t2 - t1)
 print(t3 - t2)
+print(t4 - t3)
 # Print the improvement of the second approach over the first
-print(round((abs((t3 - t2) - (t2 - t1)) / (t2 - t1)) * 100, 2))
+print(round((abs((t3 - t2) - (t2 - t1)) / (t2 - t1)) * 100, 2))  # Comparison of 2nd and 1st method
+print(round((abs((t4 - t3) - (t3 - t2)) / (t3 - t2)) * 100, 2))  # Comparison of 3rd and 2nd method
+print(round((abs((t4 - t3) - (t2 - t1)) / (t2 - t1)) * 100, 2))  # Comparison of 3rd and 1st method
